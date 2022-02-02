@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wikihow2\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj": {}
+    "C:\\Users\\paulo\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wikihow2\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj": {
+    "C:\\Users\\paulo\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wikihow2\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj",
+        "projectUniqueName": "C:\\Users\\paulo\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj",
         "projectName": "ControleDeOrcamentoFamiliar",
-        "projectPath": "C:\\Users\\wikihow2\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj",
-        "packagesPath": "C:\\Users\\wikihow2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wikihow2\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\obj\\",
+        "projectPath": "C:\\Users\\paulo\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar.csproj",
+        "packagesPath": "C:\\Users\\paulo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\paulo\\OneDrive\\Cursos\\Alura\\Challenge Backend\\API_ControleDeOrcamentoFamiliar\\ControleDeOrcamentoFamiliar\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wikihow2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,10 +40,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[11.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"
@@ -61,7 +52,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.13, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -86,24 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

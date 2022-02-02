@@ -1,11 +1,12 @@
-﻿using ControleDeOrcamentoFamiliar.Models.Enums;
+﻿using AutoMapper;
+using ControleDeOrcamentoFamiliar.Models.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ControleDeOrcamentoFamiliar.Models
+namespace ControleDeOrcamentoFamiliar.Data
 {
-    public class Despesas
+    public class ReadDespesasDto
     {
 
         [Key]
@@ -22,8 +23,6 @@ namespace ControleDeOrcamentoFamiliar.Models
         public DateTime DataDespesa { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-
-        public Categorias Categorias { get; set; }
-
+        public Categorias Categoria { get; set; }
     }
 }

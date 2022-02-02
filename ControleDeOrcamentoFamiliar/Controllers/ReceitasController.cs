@@ -14,9 +14,9 @@ namespace ControleDeOrcamentoFamiliar.Controllers
     [ApiController]
     public class ReceitasController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly OrcamentoContext _context;
 
-        public ReceitasController(AppDbContext context)
+        public ReceitasController(OrcamentoContext context)
         {
             _context = context;
         }
@@ -25,14 +25,14 @@ namespace ControleDeOrcamentoFamiliar.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Receitas>>> Getreceitas()
         {
-            return await _context.receitas.ToListAsync();
+            return await _context.Receitas.ToListAsync();
         }
 
         // GET: api/Receitas/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Receitas>> GetReceitas(int id)
         {
-            var receitas = await _context.receitas.FindAsync(id);
+            var receitas = await _context.Receitas.FindAsync(id);
 
             if (receitas == null)
             {
@@ -78,7 +78,7 @@ namespace ControleDeOrcamentoFamiliar.Controllers
         [HttpPost]
         public async Task<ActionResult<Receitas>> PostReceitas(Receitas receitas)
         {
-            _context.receitas.Add(receitas);
+            _context.Receitas.Add(receitas);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetReceitas", new { id = receitas.IdReceita }, receitas);
@@ -88,13 +88,13 @@ namespace ControleDeOrcamentoFamiliar.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReceitas(int id)
         {
-            var receitas = await _context.receitas.FindAsync(id);
+            var receitas = await _context.Receitas.FindAsync(id);
             if (receitas == null)
             {
                 return NotFound();
             }
 
-            _context.receitas.Remove(receitas);
+            _context.Receitas.Remove(receitas);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace ControleDeOrcamentoFamiliar.Controllers
 
         private bool ReceitasExists(int id)
         {
-            return _context.receitas.Any(e => e.IdReceita == id);
+            return _context.Receitas.Any(e => e.IdReceita == id);
         }
     }
 }

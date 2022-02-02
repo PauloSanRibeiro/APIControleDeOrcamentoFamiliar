@@ -4,13 +4,13 @@ using ControleDeOrcamentoFamiliar.Models;
 
 namespace ControleDeOrcamentoFamiliar.Data
 {
-    public class AppDbContext : DbContext
+    public class OrcamentoContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public OrcamentoContext(DbContextOptions<OrcamentoContext> options) : base(options)
         {
 
         }
-        public DbSet<Receitas> receitas { get; set; }
+        public DbSet<Receitas> Receitas { get; set; }
         public DbSet<Despesas> Despesas { get; set; }
 
 

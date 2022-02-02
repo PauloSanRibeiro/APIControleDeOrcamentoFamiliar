@@ -7,102 +7,77 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleDeOrcamentoFamiliar.Data;
 using ControleDeOrcamentoFamiliar.Models;
+using AutoMapper;
 
 namespace ControleDeOrcamentoFamiliar.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class DespesasController : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public DespesasController(AppDbContext context)
+        private readonly OrcamentoContext _context;
+        private readonly IMapper _mapper;
+        public DespesasController(OrcamentoContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        // GET: api/Despesas
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Despesas>>> GetDespesas()
-        {
-            return await _context.Despesas.ToListAsync();
-        }
-
-        // GET: api/Despesas/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Despesas>> GetDespesas(int id)
-        {
-            var despesas = await _context.Despesas.FindAsync(id);
-
-            if (despesas == null)
-            {
-                return NotFound();
-            }
-
-            return despesas;
-        }
-
-        // PUT: api/Despesas/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDespesas(int id, Despesas despesas)
-        {
-            if (id != despesas.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(despesas).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DespesasExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Despesas
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Despesas>> PostDespesas(Despesas despesas)
+        public IActionResult AddDespesa([FromBody] CreateDespesasDto despesasDto)
         {
-            _context.Despesas.Add(despesas);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDespesas", new { id = despesas.Id }, despesas);
+            Despesas despesa = _mapper.Map<Despesas>(despesasDto);
+            _context.Despesas.Add(despesa);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(RecuperaDespesasPorId), new { Id = despesa.Id }, despesa);
         }
 
-        // DELETE: api/Despesas/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDespesas(int id)
+
+        [HttpGet]
+        public IActionResult RecuperaDespesas()
         {
-            var despesas = await _context.Despesas.FindAsync(id);
-            if (despesas == null)
+            return Ok(_context.Despesas);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult RecuperaDespesasPorId(int id)
+        {
+            Despesas despesa = _context.Despesas.FirstOrDefault(despesa => despesa.Id == id);
+            if (despesa != null)
             {
-                return NotFound();
+                ReadDespesasDto despesasDto = _mapper.Map<ReadDespesasDto>(despesa);
+                return Ok(despesa);
             }
 
-            _context.Despesas.Remove(despesas);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return NotFound();
         }
 
-        private bool DespesasExists(int id)
+        [HttpPut("{id}")]
+        public IActionResult AtualizaDespesas(int id, [FromBody] UpdateDespesasDto despesasDto)
         {
-            return _context.Despesas.Any(e => e.Id == id);
+            Despesas despesa = _context.Despesas.FirstOrDefault(despesa => despesa.Id == id);
+            if (despesa != null)
+            {
+                _mapper.Map(despesasDto, despesa);
+                _context.SaveChanges();
+
+                return NoContent();
+            }
+            return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletaDespesa(int id)
+        {
+            Despesas despesa = _context.Despesas.FirstOrDefault(despesa => despesa.Id == id);
+            if (despesa != null)
+            {
+                _context.Remove(despesa);
+                _context.SaveChanges();
+            }
+
+            return NotFound();
         }
     }
 }
+
